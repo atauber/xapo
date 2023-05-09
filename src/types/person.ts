@@ -40,7 +40,7 @@ let personTypeConfig: GraphQLObjectTypeConfig<any, any> = {
   }),
 }
 
-export let personType = new GraphQLObjectType(personTypeConfig)
+export let personType: GraphQLObjectType<any, any> = new GraphQLObjectType(personTypeConfig)
 
 
 let addressTypeConfig: GraphQLObjectTypeConfig<any, any> = {
@@ -71,4 +71,4 @@ let addressTypeConfig: GraphQLObjectTypeConfig<any, any> = {
   }),
 }
 
-export let addressType = new GraphQLObjectType(addressTypeConfig)
+export let addressType: GraphQLObjectType<any, any> = new GraphQLObjectType(addressTypeConfig)

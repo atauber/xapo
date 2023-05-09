@@ -17,6 +17,6 @@ let schemaconfig: GraphQLSchemaConfig = {
     types: [personType, addressType, catType, dogType, petType, rgbType, oddType, personInputType],
 }
 
-export let schema = new GraphQLSchema(schemaconfig)
+export let schema: GraphQLSchema = new GraphQLSchema(schemaconfig)
 
 

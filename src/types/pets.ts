@@ -1,7 +1,7 @@
 import {
     GraphQLFieldConfig, GraphQLFieldConfigMap,
     GraphQLInt, GraphQLObjectType,
-    GraphQLObjectTypeConfig, GraphQLString, GraphQLTypeResolver, GraphQLUnionType
+    GraphQLObjectTypeConfig, GraphQLString, GraphQLTypeResolver, GraphQLUnionType, GraphQLUnionTypeConfig
 } from 'graphql'
 import { entityIType } from './base.js'
 
@@ -21,10 +21,12 @@ let dogTypeConfig: GraphQLObjectTypeConfig<any, any> = {
     name: "DogType",
     description: "a type for a dog.",
     interfaces: [entityIType],
-    fields: () => (dogTypeFields),
+    fields: (): GraphQLFieldConfigMap<any, any> => {
+        return (dogTypeFields)
+    },
 }
 
-export let dogType = new GraphQLObjectType(dogTypeConfig)
+export let dogType: GraphQLObjectType<any, any> = new GraphQLObjectType(dogTypeConfig)
 
 let catTypeConfig: GraphQLObjectTypeConfig<any, any> = {
     name: "CatType",
@@ -51,9 +53,9 @@ let catTypeConfig: GraphQLObjectTypeConfig<any, any> = {
     }),
 }
 
-export let catType = new GraphQLObjectType(catTypeConfig)
+export let catType: GraphQLObjectType<any, any> = new GraphQLObjectType(catTypeConfig)
 
-export let resolvePetType2: GraphQLTypeResolver<any, any> = (obj: any, contextValue: any, info: any) => {
+let resolvePetType2: GraphQLTypeResolver<any, any> = (obj: any, contextValue: any, info: any): Promise<string | undefined> => {
 
     let executor: (
         resolve: (value: string | PromiseLike<string | undefined> | undefined) => void,
@@ -75,13 +77,15 @@ export let resolvePetType2: GraphQLTypeResolver<any, any> = (obj: any, contextVa
 
     const promise: Promise<string | undefined> = new Promise(executor)
 
-    return promise; // GraphQLError is thrown
+    return promise;
 }
 
-export let petType = new GraphQLUnionType({
+let petTypeConfig: GraphQLUnionTypeConfig<any, any> = {
     name: "Pet",
     types: [dogType, catType],
     description: "Type for all pets.",
     resolveType: resolvePetType2
-})
+}
+
+export let petType: GraphQLUnionType = new GraphQLUnionType(petTypeConfig)
 

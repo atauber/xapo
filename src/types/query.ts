@@ -60,4 +60,4 @@ let queryTypeConfig: GraphQLObjectTypeConfig<any, any> = {
 }
 
 // Define the Query type
-export let queryType = new GraphQLObjectType(queryTypeConfig)
+export let queryType: GraphQLObjectType<any, any> = new GraphQLObjectType(queryTypeConfig)

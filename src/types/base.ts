@@ -25,7 +25,7 @@ let entityITypeConfig: GraphQLInterfaceTypeConfig<Entity, IncomingMessage> = {
 }
 
 //Base entity type ingerface.
-export let entityIType = new GraphQLInterfaceType(entityITypeConfig)
+export let entityIType: GraphQLInterfaceType = new GraphQLInterfaceType(entityITypeConfig)
 
 
 function oddValue(value: number) {
@@ -92,4 +92,4 @@ let rgbTypeConfig: GraphQLEnumTypeConfig = {
     values: rgbTypeEnumValuesConfig,
 }
 
-export let rgbType = new GraphQLEnumType(rgbTypeConfig)
+export let rgbType: GraphQLEnumType = new GraphQLEnumType(rgbTypeConfig)

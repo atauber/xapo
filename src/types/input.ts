@@ -13,4 +13,4 @@ let personInputTypeConfig: GraphQLInputObjectTypeConfig = {
     },
 }
 
-export let personInputType = new GraphQLInputObjectType(personInputTypeConfig)
+export let personInputType: GraphQLInputObjectType = new GraphQLInputObjectType(personInputTypeConfig)
