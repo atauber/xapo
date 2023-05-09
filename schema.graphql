@@ -1,0 +1,26 @@
+# This Book type has two fields: title and author
+type Book {
+  title: String # returns a String
+  author: Author # returns an Author
+}
+
+type Author {
+  name: String
+  books: [Book] # A list of Books
+}
+
+type Character {
+  name: String!
+  appearsIn: [Episode!]!
+}   
+
+type AddBookMutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+  book: Book
+}
+
+type Mutation {
+  addBook(title: String, author: String): AddBookMutationResponse
+}

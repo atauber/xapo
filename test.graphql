@@ -1,0 +1,234 @@
+query PersonQuery{
+  person(name: "andreas"){
+    name
+    age
+    surname
+    fullname
+    bestFriend {
+      type
+      name
+      surname
+      fullname
+      age
+      bestFriend{
+        name
+      }
+    }
+    address {
+      rgb
+      street
+      number
+      formatted
+      city
+      rgb
+    }
+  }
+}
+
+query CatQuery {
+  cat(name: "unicorn"){
+    name
+    age
+    nickname
+  }
+}
+
+query CatsAllQuery{
+   cats{
+    name
+    age
+  }
+}
+
+query PetQuery {
+  pet(name: "unicorn") {
+    # Querying for __typename is almost always recommended,
+    # but it's even more important when querying a field that
+    # might return one of multiple types.
+    __typename
+    ... on CatType {
+      name
+      nickname
+    }
+    ... on DogType {
+      name
+      age
+      funname
+    }
+  }
+}
+  
+query Unicorn
+{
+  cat(name:"unicorn"){
+    name
+    type
+  }
+}
+
+{
+  __type(name: "Query") {
+    name
+    description
+    kind
+    fields {
+      name
+      type {
+        name
+        kind
+        description
+      }
+      args {
+        name
+        description
+        type {
+          name
+        }
+      }
+    }
+  }
+}
+
+{
+  __schema {
+    queryType {
+      name
+      description
+      kind
+      fields {
+        name
+        description
+        args {
+          name
+        }
+      }
+    }
+  }
+}
+
+{
+  __schema {
+    description
+    types {
+      name
+      kind
+    }
+  }   
+}
+
+{
+  __schema {
+    description
+    types{
+      name
+      description
+      kind
+      interfaces{
+        name
+        kind
+        fields{
+          name
+        }
+      }
+      fields{
+        name
+        description
+        isDeprecated
+      }
+    }
+  }  
+}
+
+{
+  __type(name: "PersonType"){
+    name
+    description
+    kind
+    interfaces{
+      name
+      kind
+      description
+      fields{
+        name
+      }
+      
+    }
+    fields{
+      name
+      type{
+        name
+      }
+      args{
+        name
+      }
+    }
+  }
+}
+
+{
+  __type(name: "AddressType"){
+    name
+    description
+    kind
+    interfaces{
+      name
+      description
+      fields{
+        name
+        description
+        type {
+          name
+        }
+      }
+    }
+    fields{
+      name
+      type{
+        name
+        kind
+      }
+      description
+    }
+  }
+}
+
+
+{
+  __type(name: "CatType"){
+    name
+    description
+    kind
+    interfaces{
+      name
+      description
+      fields{
+        name
+        description
+        type {
+          name
+        }
+      }
+    }
+    fields{
+      name
+      type{
+        name
+        kind
+      }
+      description
+    }
+  }
+}
+
+{
+  __type(name: "RgbType"){
+    name
+    description
+    kind
+    enumValues{
+      name
+      description
+      isDeprecated
+    }
+  }
+}

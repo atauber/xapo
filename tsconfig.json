@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "outDir": "out",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "allowUnusedLabels": false,
+    "noEmitOnError": true,
+    "allowUnreachableCode": false,
+    "checkJs": true,
+    "lib": [
+      "ES2020",
+    ],
+  },
+  "include": [
+    "src",
+  ],
+  "exclude": [
+    "node_modules",
+    "src/book/**/*"
+  ]
+}
